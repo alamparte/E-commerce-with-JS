@@ -53,7 +53,6 @@ searchProduct(productList)
 
 
 function shoppingCart() {
-    console.log(productList[0].id);
     let newProduct;
     do {
         let price = 0;
