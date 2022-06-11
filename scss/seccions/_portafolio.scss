@@ -1,0 +1,59 @@
+@import "../utilities/mixins";
+main{
+    .mainPortafolio{
+        max-width: 75rem;
+        margin: 1rem auto 6rem auto;
+        display: grid; 
+        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); 
+        grid-auto-rows: auto;
+        align-items: center;
+        justify-items: center;
+        gap: 2rem;
+        @include measures (100%, auto);
+        img{
+            @include measures (100%, auto);
+            display: block;
+        }
+    }
+    @media only screen and (max-width: 467px){
+        .mainPortafolio{
+            @include measures (90%, auto);
+            img{
+            @include measures (90%, auto);
+            }
+        }
+    }
+    @media only screen and (min-width: 468px) and (max-width: 628px){ 
+        .mainPortafolio{
+            padding: 0 3rem;
+            @include measures (90%, auto);
+            img{
+                @include measures (90%, auto);
+            }
+        }
+    }
+    @media only screen and (min-width: 628px) and (max-width: 727px){
+        .mainPortafolio{
+            padding: 0 8rem;
+        }
+    }
+    @media only screen and (min-width: 728px) and (max-width: 801px){ 
+        .mainPortafolio{
+            grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); 
+        }
+    }
+    @media only screen and (min-width: 979px) and (max-width: 1152px){
+        .mainPortafolio{
+            grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); 
+            @include measures (90%, auto);
+            img{
+                @include measures (90%, auto);
+            }
+        }
+    }
+    @media only screen and (min-width: 728px) and (max-width: 1289px){ 
+        .mainPortafolio{
+            padding: 0 3.5rem;
+        }       
+    }
+}

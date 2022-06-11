@@ -1,0 +1,20 @@
+@import "base/reset";
+@import "base/body";
+
+@import "components/carousel";
+@import "components/cards";
+
+@import "layout/header";
+@import "layout/footer";
+@import "layout/grid";
+
+@import "seccions/bio";
+@import "seccions/productos";
+@import "seccions/contacto";
+@import "seccions/home";
+@import "seccions/portafolio";
+
+@import "utilities/mixins";
+@import "utilities/variables";
+@import "utilities/extends";
+@import "utilities/maps";

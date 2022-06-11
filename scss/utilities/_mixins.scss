@@ -1,0 +1,13 @@
+
+
+@mixin measures($width, $height) {
+    width: $width;
+    height: $height;    
+}
+
+@mixin flex($x, $y, $gap){
+    display: flex;
+    justify-content: $x;
+    align-items: $y;
+    gap: $gap;
+}

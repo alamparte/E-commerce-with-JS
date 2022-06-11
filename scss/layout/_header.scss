@@ -1,0 +1,209 @@
+@import "../utilities/mixins";
+@import "../utilities/variables";
+@import "../utilities/maps";
+
+header{
+    nav{ 
+        padding: 0 3rem;
+        .logo{
+            @include measures(auto, 80px);
+        }
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        background-color: $color-nav;
+        @include flex(space-between, center, 0);
+        @include measures (100%, 6.5rem);
+        box-shadow: 0 2px 3px 0 rgba(0,0,0,.1);
+        input{
+            display: none;
+        }
+        .fa-bars{
+            display: none;
+        }
+        .fa-times{
+            display: none;
+        }
+        .menu{
+            li{
+                z-index: 1;
+                margin: .6rem;
+                padding: 0 .5rem;
+                a{
+                    font-size: 1.2rem;
+                    color: map-get($map: $colores, $key: a);
+                    &:hover{
+                        color: map-get($map: $colores, $key: hover);
+                    }
+                }
+                &:hover{
+                    > .submenu{
+                    visibility: visible;
+                    opacity: 1;
+                    }
+                }
+                .submenu{
+                    position: absolute;
+                    display: flex;
+                    flex-direction: column;
+                    visibility: hidden;
+                    opacity: 0;
+                    transition: .5s;
+                    background-color: $color-nav;
+                    padding-top: 1.5rem;
+                    box-shadow: 0 1.5px 0 0 rgba(0,0,0,.1);
+                    .outline{
+                        padding-top: 1.5rem;
+                        border-top: solid #CBB5F5 2px;
+                    }
+                    li{
+                        margin: 1.1rem;
+                        padding: 0 .3rem;
+                    }
+                }
+            }
+        }
+        .carrito{
+            a{
+                img{
+                    @include measures (22px, 22px);
+                }
+            }
+        }
+    }
+    .titleIndex{
+        margin-top: 5.5rem;
+        padding-bottom: 0;
+        background-color: map-get($map: $colores, $key: fondo);
+    }
+    h1{
+        margin-top: 7.5rem;
+        padding: 1.6rem 0 1.8rem 0;
+        text-align: center;
+        font-size: 2rem;
+        font-family: $font-secundaria;
+        color: map-get($map: $colores, $key: title);
+        font-weight: 500;
+    }
+    @media only screen and (max-width: 468px){
+        nav{
+            .logo{
+                @include measures(auto, 65px);
+            }
+        }
+        h1{
+            font-size: 1.60rem;
+        }
+    }
+    @media only screen and (max-width: 56.99rem){
+        nav{
+            position: relative;
+            position: fixed;
+            z-index: 1;
+            padding-left: 2rem;
+            input[type="checkbox"]{
+                position: absolute;
+                box-sizing: border-box;
+                right: 4.4%;
+                @include measures (42px, 42px);
+                opacity: 0; 
+            }
+            input{
+                display: block;
+                &:checked{
+                    ~ {
+                        ul{           
+                            position: fixed;
+                            display: block;
+                            top: 5.625rem;
+                            background-color: $color-nav;
+                            box-shadow: 0 2px 3px 0 rgba(0,0,0,.1);
+                            right: 0;
+                            left: 0;
+                            padding: 0rem;
+                            margin: 0;
+                            li{
+                                margin: 0rem;
+                                display: block;
+                                border-bottom: 0.1rem solid #CBB5F5;
+                                padding: 1.3rem 1.3rem 1.3rem 4.6rem;
+                            }
+                            .submenu{
+                                background-color: transparent;
+                                box-shadow: none;
+                                padding: 0;
+                                margin: 0;
+                                transition: all .5s ease-in-out;
+                                .outline{
+                                    padding-top: 1.5rem;
+                                    border: none;
+                                }
+                                li{
+                                    padding: 1.5rem 0 1rem 0;
+                                    margin: 0rem;
+                                    border-top: 0.1rem solid #CBB5F5;
+                                    border-bottom: none;
+                                }
+                            }
+                        }
+                        .fa-bars{
+                            display: none;
+                        }
+                    }
+                }
+                &:not(:checked) {
+                    ~ {
+                        .fa-times {
+                            display: none;
+                        }
+                    }
+                } 
+            }
+            .fa-bars{
+                display: block;
+                position: absolute;
+                box-sizing: border-box;
+                right: 0;
+                padding-right: 4.5rem;
+                @include measures (42px, 42px);
+                font-size: 42px;
+                pointer-events: none;
+                color: map-get($map: $colores, $key: details);
+            }
+            .fa-times{
+                display: block;
+                position: absolute;
+                box-sizing: border-box;
+                right: 0;
+                padding-right: 4.5rem;
+                @include measures (42px, 42px);
+                font-size: 42px;
+                pointer-events: none;
+                color: map-get($map: $colores, $key: details);
+            }
+            .menu{
+                display: none;
+                >li {
+                    &:hover{
+                        >.submenu{
+                            position: relative;
+                        }
+                    }
+                }
+            }
+            .carrito{
+                padding-right: 3.1rem;
+            }
+        }
+    }
+    @media only screen and (min-width: 57rem) and (max-width: 1260px){
+        nav{
+            .menu{
+                margin-left: 0;
+                li{
+                    padding: 0 .5rem 0 .5rem;
+                }
+            }
+        }
+    }
+}

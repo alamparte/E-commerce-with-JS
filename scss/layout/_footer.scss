@@ -1,0 +1,268 @@
+@import "../utilities/mixins";
+@import "../utilities/variables";
+
+footer{
+    display: grid;
+    grid-template-areas: "contact contact contact"
+                         "containerLeft containerCenter containerRight"
+                         "derechos derechos derechos"; 
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    @include measures (100%, auto);
+    .contact{
+        grid-area: contact;
+        @include flex(space-between, center, 0);
+        background-color: map-get($map: $colores, $key: contact);
+        font-size: 1.5rem;
+        padding: 0rem 8rem;
+        @include measures (auto, 15rem);
+        .contactP{
+            grid-area: contact;
+            color: map-get($map: $colores, $key: textF);
+            line-height: 2.2rem;
+            @include measures (33rem, auto);
+            a{
+                grid-area: contact;
+                font-weight: bold;
+                font-size: 1.6rem;
+                color: map-get($map: $colores, $key: details);
+            }
+        }
+        .email{
+            grid-area: contact;
+            .fa-envelope{
+                grid-area: contact;
+                color: map-get($map: $colores, $key: details);
+                font-size: 1.875rem;
+                padding: 0.313rem;
+            }
+            a{
+                grid-area: contact;
+                color: map-get($map: $colores, $key: textF);
+                text-decoration: none;
+            }
+        }
+    }
+    .containerLeft{
+        grid-area: containerLeft;
+        background-color: map-get($map: $colores, $key: laven);
+        @include flex(center, baseline, 1.3rem);
+        @include measures (auto, 19rem);
+        flex-direction: column;
+        padding-left: 5rem;
+        .tituloFooter{
+            grid-area: containerLeft;  
+            font-size: 1.6rem;  
+            color: map-get($map: $colores, $key: details);
+            font-family: $font-secundaria;
+            font-weight: 500;
+        }
+        p{
+            grid-area: containerLeft;
+            font-size: 1.35em;
+            line-height: 2rem;
+        }
+    }
+    .containerCenter{
+        grid-area: containerCenter;
+        background-color: map-get($map: $colores, $key: laven);
+        @include measures (auto, 19rem);
+        @include flex(center, center, 2rem);
+        flex-direction: column;
+        .logoFooter{
+            grid-area: containerCenter;
+            a{
+                grid-area: containerCenter;
+                img{
+                    grid-area: containerCenter;
+                    animation-name: girar;
+                    animation-iteration-count: infinite;
+                    animation-duration: 98s;
+                    @keyframes girar{
+                        from{
+                            transform: rotate(0);
+                        }
+                        to{
+                            transform: rotate(360deg);
+                        }
+                    }     
+                }
+            }
+        }
+        .redesSociales{
+            grid-area: containerCenter;
+            a{
+                grid-area: containerCenter;
+                text-decoration: none;
+                color: map-get($map: $colores, $key: details);
+                font-size: 1.75rem;
+                background: #c7aef5;
+                border-radius: 50%;
+                @include measures (3.125rem, 3.125rem);
+                margin: 0rem .5rem;
+                line-height: 3.125rem;
+                text-align: center;
+                box-shadow: 2px 2px 5px rgba(0, 0, 0,.05);
+                transition: all .4s ease-in-out;
+                &:hover{
+                    transform: scale(1.2);
+                    color: map-get($map: $colores, $key: laven);
+                }
+            }
+        }
+    }
+    .containerRight{
+        grid-area: containerRight;
+        @include measures (auto, 19rem);
+        @include flex(center, baseline, .9rem);
+        padding: 1.3rem 4rem 0 1.3rem;
+        background-color: map-get($map: $colores, $key: laven);
+        flex-direction: column;
+        .tituloFooter{
+            grid-area: containerRight; 
+            font-size: 1.6rem;  
+            color: map-get($map: $colores, $key: details);
+            font-family: $font-secundaria;
+            padding-bottom: 1rem;
+            font-weight: 500;
+        }
+        form{
+            grid-area: containerRight;
+            @include measures (100%, auto);
+            input{
+                grid-area: containerRight;
+                padding: 1rem;
+                @include measures (100%, auto);
+                @extend %border;
+                font-size: 1.18rem;
+                &:focus{
+                    border-color: map-get($map: $colores, $key: focus);
+                    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                    outline: 0 none;
+                }
+            }
+        }
+        button{
+            grid-area: containerRight;
+            background-color: map-get($map: $colores, $key: hover);
+            color: map-get($map: $colores, $key: details);
+            border: none;
+            border-radius: 0.20rem;
+            padding: .9rem;
+            font-size: 1.5rem;
+            @include measures (100%, auto);
+            &:hover{
+                color: lavender;
+            }
+        }
+    }
+    .derechos{
+        grid-area: derechos;
+        background-color: map-get($map: $colores, $key: laven);
+        .linie{
+            grid-area: derechos;
+            border-top: 0.063rem solid blueviolet;
+            height: 0.125rem;
+            max-width: 70%;
+            padding: 0;
+            margin: 0 auto;
+        }
+        p{
+            grid-area: derechos;
+            padding: 1.3rem;
+            font-size: 1.15rem;
+            text-align: center;
+            a{
+                grid-area: derechos;
+                text-decoration: none;
+                list-style: none;
+                color: map-get($map: $colores, $key: details);
+            }
+        }
+    }
+    @media only screen and (max-width: 1079px){
+        grid-template-areas: "contact"
+                             "containerLeft"
+                             "containerCenter"
+                             "containerRight"
+                             "derechos"; 
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        .contact{
+            justify-content: center;
+            .contactP{
+                text-align: center;
+                @include measures (auto, auto);
+            }
+            .email{
+                display: none;
+            }
+        }
+        .containerLeft{
+            align-items: center;
+            p{
+                text-align: center;
+                @include measures (auto, auto);
+            }
+        }
+        .containerRight{
+            align-items: center;
+        }
+    }
+    @media only screen and (max-width: 468px){
+        .contact{
+            padding: 0 2rem;
+        }
+        .containerLeft{
+            padding: 0 2rem;
+        }
+        .containerRight{
+            padding: 0 2rem;
+        }
+    }
+    @media only screen and (min-width: 469px) and (max-width: 699px){
+        .contact{
+            padding: 0 3.3rem;
+        }
+        .containerLeft{
+            padding: 0 3.3rem;
+        }
+        .containerRight{
+            padding: 0 3rem;
+        }
+    }
+    @media only screen and (min-width: 700px) and (max-width: 861px){
+        .contact{
+            padding: 0 2.5rem;
+        }
+        .containerLeft{
+            padding: 0 3.3rem;
+        }
+        .containerRight{
+            padding: 0 5rem;
+        }
+    }
+    @media only screen and (min-width: 862px) and (max-width: 1079px){
+        .contact{
+            padding: 0 5.5rem;
+        }
+        .containerLeft{
+            padding: 0 7rem;
+        }        
+        .containerRight{
+            padding: 0 9rem;
+        }
+    }
+    @media only screen and (min-width: 1080px) and (max-width: 1320px){
+        .contact{
+            padding: 0 3.3rem;
+        }
+        .containerLeft{
+            padding-left: 2.2rem;
+        }
+        .containerRight{
+            padding-right: 2.2rem;
+        }
+    }
+    
+}

@@ -1,0 +1,19 @@
+.grid{
+    display: grid;
+    grid-template-areas: "header"
+                          "main"
+                          "footer";
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    
+}
+
+header{
+    grid-area: header;
+}
+main{
+    grid-area: main;
+}
+footer{
+    grid-area: footer;
+}

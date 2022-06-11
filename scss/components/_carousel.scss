@@ -1,0 +1,18 @@
+
+
+.carousel{
+    .desktop{
+        display: none;
+    }
+    .mobile{
+        display: block;
+    }
+    @media only screen and (min-width: 768px){
+        .desktop{
+            display: block;
+        }
+        .mobile{
+            display: none;
+        }
+    }
+}

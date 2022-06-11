@@ -1,0 +1,31 @@
+@import "../utilities/mixins";
+
+.productos{
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr)); 
+    grid-auto-rows: auto;
+    row-gap: 2.3rem;
+    align-items: center;
+    justify-items: center;
+    max-width: 87.5rem;
+    margin: .9rem auto 6rem auto;
+    @include measures (100%, auto);
+    @media only screen and (max-width: 499px){
+        grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+        margin: .8rem 0 4rem 0;
+    }
+    @media only screen and (min-width: 500px) and (max-width: 1012px){ 
+        padding: 0 1.2rem;       
+    }
+    @media only screen and (min-width: 850px) and (max-width: 939px){ 
+        column-gap: 1.5rem;
+        padding: 0 1.5rem;
+    }
+    @media only screen and (min-width: 1013px) and (max-width: 1119px){
+        padding: 0 2.6rem;
+    }
+    @media only screen and (min-width: 1169px) and (max-width: 1479px){ 
+        grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+        padding: 0 1.2rem;
+    }
+}

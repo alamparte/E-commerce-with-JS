@@ -1,0 +1,347 @@
+@import "../utilities/mixins";
+@import "../utilities/variables";
+
+
+main{
+    .productosIndex{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        @include measures (100%, auto);
+        margin: 3rem 0;
+        gap: 2rem;
+        .productoIndex{
+            position: relative;
+            @include measures (100%, auto);
+            flex-direction: row;
+            @include flex (center, center, 2rem);
+            div{
+                text-align: center;
+                @include measures (18rem, auto);
+                h2{
+                    font-size: 1.8rem;
+                    padding: 1.5rem 0;
+                    a{
+                        color: map-get($map: $colores, $key: title);
+                        &:hover{
+                            color: map-get($map: $colores, $key: hover);
+                        }    
+                    }
+                }
+                p{
+                    font-size: 1.4rem;
+                    line-height: 2.2rem;
+                }
+                button{
+                    margin-top: 1.5rem;
+                    border: none;
+                    a{
+                        color: map-get($map: $colores, $key: details);
+                        background-color: map-get($map: $colores, $key: textF);
+                        font-size: 1.3rem;
+                        width: 100%;
+                        display: inline-block;
+                        padding: .8rem 1.2rem;
+                        border: #8f5bd8 solid .03rem;
+                        border-radius: 0.20rem;
+
+                        &:hover{
+                            background-color: map-get($map: $colores, $key: laven);
+                        }
+                    }
+                }
+            }
+            figure{
+                @include measures (33rem, auto);
+                a{
+                    img{
+                        @include measures (100%, auto);
+                        border-radius: .20rem
+                    }
+                }
+            }
+        }
+    }
+    .portafolioIn{
+        background-color: map-get($map: $colores, $key: laven);
+        .portafolioIndex{
+            max-width: 87.5rem;
+            margin: 0 auto;
+            padding: 5rem 0;
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); 
+            grid-auto-rows: auto; 
+            gap: .9rem;    
+            @include measures (90%, auto); 
+            img{
+                @include measures (100%, auto);
+            }      
+        }
+    }
+    .bioIndex{
+        @include measures (70rem, auto);
+        @include flex (center, center, 0);
+        flex-direction: column;
+        margin: 4rem auto;
+        h2{
+            font-size: 2rem;
+            color: map-get($map: $colores, $key: title);
+            font-family: $font-secundaria;
+        }
+        p{
+            font-size: 1.4rem;
+            line-height: 2.3rem;
+            padding: 1.3rem 0 1.9rem 0;
+            text-align: center;
+        }
+        button{
+            border: none;
+            a{
+                background-color: map-get($map: $colores, $key: hover);
+                font-size: 1.7rem;
+                border-radius: 0.20rem;
+                padding: .9rem 1.4rem .9rem 1.4rem;
+                color: map-get($map: $colores, $key: details);
+                &:hover {
+                color: map-get($map: $colores, $key: laven);
+                }
+            }
+        }
+    }
+    @media only screen and (max-width: 468px){
+        .productosIndex{
+            margin-top: .5rem;
+            #sticker{
+                flex-direction: column-reverse;
+            }
+            gap: 0;
+            .productoIndex{
+                flex-direction: column;
+                gap: 0;
+                div{
+                    @include measures (auto, auto);
+                    p{
+                        @include measures (75%, auto);
+                        margin: 0 auto;
+                    }
+                    button{
+                        font-size: 1.3rem;
+                    }
+                }
+                figure{
+                    margin-top: 2rem; 
+                    @include measures (85%, auto);
+                }
+            }
+        }
+        .bioIndex{
+            @include measures (70%, auto);
+            h2{
+                font-size: 1.6rem;
+            }
+            button{
+                font-size: 1.6rem;
+            }
+        }
+    }
+    @media only screen and (min-width: 469px) and (max-width: 768px){
+        .productosIndex{
+            margin-top: 1rem;
+            #sticker{
+                flex-direction: column-reverse;
+            }
+            gap: 0;
+            .productoIndex{
+                flex-direction: column;
+                gap: 0;
+                div{
+                    @include measures (auto, auto);
+                    p{
+                        @include measures (75%, auto);
+                        margin: 0 auto;
+                    }
+                    button{
+                        font-size: 1.4rem;
+                    }
+                }
+                figure{
+                    @include measures (79%, auto);
+                    margin-top: 2rem; 
+                }
+            }
+        }
+        .bioIndex{
+            @include measures (70%, auto);
+            h2{
+                font-size: 1.7rem;
+            }
+            button{
+                font-size: 1.6rem;
+            }
+        }
+    }
+    @media only screen and (min-width: 769px) and (max-width: 1199px){
+        .productosIndex{
+            margin: 2rem auto;
+            @include measures (90%, auto);
+            .productoIndex{
+                gap: 1.5rem;
+                div{
+                    @include measures (80%, auto);
+                    p{
+                        font-size: 1.39rem;
+                    }
+                    button{
+                        font-size: 1.4rem;
+                    }
+                }
+                figure{
+                    @include measures (80%, auto);
+                    margin-top: 0; 
+                }
+            }
+        }
+        .bioIndex{
+            @include measures (80%, auto);
+            h2{
+                font-size: 1.7rem;
+            }
+            button{
+                font-size: 1.6rem;
+            }
+        }
+    }
+    @media only screen and (max-width: 456px){
+        .portafolioIn{
+            .portafolioIndex{
+                @include measures (85%, auto);
+            }
+        }
+    }
+    @media only screen and (min-width: 457px) and (max-width: 565px){
+        .portafolioIn{
+            .portafolioIndex{
+                padding: 5rem 4rem;
+            }
+        }
+    }
+    @media only screen and (min-width: 566px) and (max-width: 682px){
+        .portafolioIn{
+            .portafolioIndex{
+                @include measures (50%, auto);
+            }
+        }
+    }
+    @media only screen and (min-width: 683px) and (max-width: 844px){
+        .portafolioIn{
+            .portafolioIndex{
+                @include measures (85%, auto);
+            }
+        }
+    }
+    @media only screen and (min-width: 845px) and (max-width: 975px){
+        .portafolioIn{
+            .portafolioIndex{
+                grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+                @include measures (70%, auto);
+            }
+        }
+    }
+    @media only screen and (min-width: 976px) and (max-width: 1033px){
+        .portafolioIn{
+            .portafolioIndex{
+                @include measures (90%, auto);
+                grid-template-columns: repeat(auto-fill, minmax(14.5rem, 1fr));
+                .a, .b{
+                    display: none
+                }
+            }
+        }
+    }
+    @media only screen and (min-width: 1034px) and (max-width: 1101px){
+        .portafolioIn{
+            .portafolioIndex{
+                @include measures (85%, auto);
+                grid-template-columns: repeat(auto-fill, minmax(14.5rem, 1fr));
+                .a, .b{
+                    display: none
+                }
+            }
+        }
+    }
+    @media only screen and (min-width: 1100px) and (max-width: 1255px){
+        .portafolioIn{
+            .portafolioIndex{
+                @include measures (80%, auto);
+                grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+                .a, .b{
+                    display: none
+                }
+            }
+        }
+    }
+    @media only screen and (min-width: 1256px) and (max-width: 1311px){
+        .portafolioIn{
+            .portafolioIndex{
+                @include measures (70%, auto);
+                grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+                .a, .b{
+                    display: none
+                }
+            }
+        }
+    }
+
+    // @media only screen and (max-width: 499px){
+    //     .portafolioIndex{
+    //         gap: 1.3rem;
+    //         padding: 5rem 1.1rem;
+    //         img{
+    //             @include measures (75%, auto);
+    //         }
+    //     }
+    // }
+    // @media only screen and (min-width: 500px) and (max-width: 623px){
+    //     .portafolioIndex{
+    //         gap: 1.2rem;
+    //         padding: 5rem 1.5rem;
+    //         img{
+    //             @include measures (73%, auto);
+    //         }
+    //     }
+    // }
+    // @media only screen and (min-width: 624px) and (max-width: 747px){
+    //     .portafolioIndex{
+    //         gap: 1.2rem;
+    //         img{
+    //             @include measures (75%, auto);
+    //         }
+    //     }
+    // }  
+    // @media only screen and (min-width: 739px) and (max-width: 747px){
+    //     .portafolioIndex{
+    //         padding: 5rem 4rem;
+    //         gap: 1.2rem 0;
+    //         img{
+    //             @include measures (95%, auto);
+    //         }
+    //     }
+    // }  
+    // @media only screen and (min-width: 768px) and (max-width: 924px){
+    //     .portafolioIndex{
+    //         padding: 5rem 4.5rem;
+    //         img{
+    //             @include measures (90%, auto);
+    //         }
+    //     }
+    // }
+    // @media only screen and (min-width: 761px) and (max-width: 793px){
+    //     .portafolioIndex{
+    //         padding: 5rem 4.5rem;
+    //         gap: 1.2rem 0;
+    //         img{
+    //             @include measures (95%, auto);
+    //         }
+    //     }
+    // }
+}

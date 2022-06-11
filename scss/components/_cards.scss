@@ -1,0 +1,88 @@
+@import "../utilities/mixins";
+@import "../utilities/variables";
+@import "../utilities/maps";
+
+
+.productos{
+    .producto{
+        @include measures (27rem, auto);
+        position: relative;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: .25rem;
+        display: flex;
+        flex-direction: column;
+        transition: all .4s ease-in-out;
+            &:hover{
+                transform: scale(1.01);
+            }
+        figure{
+            img{
+                @include measures (100%, auto);
+                border-top-left-radius: .25rem;
+                border-top-right-radius: .25rem;
+            }
+        }
+        .productoBody{
+            padding: 1rem;
+            .tituloProducto{
+                font-size: 1.9rem;
+                font-weight: 500;
+                margin-bottom: .5rem;
+            }
+            .parrafoProducto{
+                font-size: 1.4rem;
+                line-height: 1.6rem;
+                margin-bottom: .5rem;
+            }
+            .precio{
+                font-size: 1.4rem;
+                margin-bottom: .9rem;
+            }
+            .botonProducto{
+                width: 100%;
+                border: none;
+                a{
+                    background-color: map-get($map: $colores, $key: hover);
+                    color: map-get($map: $colores, $key: details);
+                    width: 100%;
+                    padding:.7rem;
+                    border: none;
+                    font-size: 1.7rem;
+                    border-radius: .25rem;
+                    display: inline-block;
+                    &:hover{
+                        color: map-get($map: $colores, $key: laven);
+                    }
+                }
+            }
+        }
+    }
+    @media only screen and (max-width: 499px){
+        .producto{
+            @include measures (18.5rem, auto);
+            .productoBody{
+                .parrafoProducto{
+                    font-size: 1.29rem;
+                }
+                .botonProducto{
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+    @media only screen and (min-width: 850px) and (max-width: 939px){ 
+        .producto{
+            @include measures (24.7rem, auto);
+        }
+    }
+    @media only screen and (min-width: 940px) and (max-width: 1014px){ 
+        .producto{
+            @include measures (24.5rem, auto);
+        }
+    }
+    @media only screen and (min-width: 1169px) and (max-width: 1479px){ 
+        .producto{
+            @include measures (22rem, auto);
+        }
+    }
+}
