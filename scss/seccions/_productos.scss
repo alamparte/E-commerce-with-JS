@@ -29,3 +29,72 @@
         padding: 0 1.2rem;
     }
 }
+.mainTienda{
+    .contenedor{
+        .tituloCarrito{
+            font-size: 2.1rem;
+            text-align: center;
+            color: #8f5bd8;
+            padding: 1rem;
+        }
+        .carrito{
+            display: flex;
+            justify-content: space-around;
+            .table{
+                thead{
+                    .items{
+                        th{
+                            font-size: 1.7rem;
+                            padding: 1.7rem 5.3rem;
+                            #vaciarCarrito{
+                                background-color: #ccbae5;
+                                color: #533d71;
+                                border: none;
+                                padding: .7rem 1.2rem;
+                                border-radius: .5rem;
+                                font-size: 1.3rem;
+                            }
+                        }
+                    }
+                }
+                #productTable{
+                    font-size: 1.2rem;
+                    tr{
+                        th{
+                            padding: 1rem;
+                        }
+                        .btnEliminar{
+                            background-color: #a88dcf;
+                            color: lavender;
+                            border: none;
+                            padding: .7rem 1.2rem;
+                            border-radius: .5rem;
+                            font-size: 1.3rem;
+                        }
+                    }
+                }
+            }
+        }.precioTotal{
+            padding-left: 25rem;
+            padding-top: 2rem;
+            font-size: 1.3rem;
+
+        }
+        #totalPrice{
+            font-size: 1.2rem;
+        }
+        #ConfirmarCompra{
+            background-color: #a88dcf;
+            color: lavender;
+            border: none;
+            padding: .7rem 1.2rem;
+            border-radius: .5rem;
+            font-size: 1.3rem;
+            margin: 2.3rem 29rem;
+            text-align: center;
+            display: block;
+            align-items: center;
+            width: 40%;
+        }
+    }
+}

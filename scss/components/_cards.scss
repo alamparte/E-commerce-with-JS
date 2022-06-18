@@ -41,18 +41,15 @@
             .botonProducto{
                 width: 100%;
                 border: none;
-                a{
-                    background-color: map-get($map: $colores, $key: hover);
-                    color: map-get($map: $colores, $key: details);
-                    width: 100%;
-                    padding:.7rem;
-                    border: none;
-                    font-size: 1.7rem;
-                    border-radius: .25rem;
-                    display: inline-block;
-                    &:hover{
-                        color: map-get($map: $colores, $key: laven);
-                    }
+                background-color: map-get($map: $colores, $key: hover);
+                color: map-get($map: $colores, $key: details);
+                padding:.7rem;
+                font-size: 1.7rem;
+                border-radius: .25rem;
+                display: inline-block;
+                text-align: center;
+                &:hover{
+                    color: map-get($map: $colores, $key: laven);
                 }
             }
         }

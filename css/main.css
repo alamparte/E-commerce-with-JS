@@ -112,18 +112,16 @@ body {
       margin-bottom: .9rem; }
     .productos .producto .productoBody .botonProducto {
       width: 100%;
-      border: none; }
-      .productos .producto .productoBody .botonProducto a {
-        background-color: #c7aef5;
-        color: #8f5bd8;
-        width: 100%;
-        padding: .7rem;
-        border: none;
-        font-size: 1.7rem;
-        border-radius: .25rem;
-        display: inline-block; }
-        .productos .producto .productoBody .botonProducto a:hover {
-          color: lavender; }
+      border: none;
+      background-color: #c7aef5;
+      color: #8f5bd8;
+      padding: .7rem;
+      font-size: 1.7rem;
+      border-radius: .25rem;
+      display: inline-block;
+      text-align: center; }
+      .productos .producto .productoBody .botonProducto:hover {
+        color: lavender; }
 
 @media only screen and (max-width: 499px) {
   .productos .producto {
@@ -655,6 +653,58 @@ footer {
     .productos {
       grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
       padding: 0 1.2rem; } }
+
+.mainTienda .contenedor .tituloCarrito {
+  font-size: 2.1rem;
+  text-align: center;
+  color: #8f5bd8;
+  padding: 1rem; }
+
+.mainTienda .contenedor .carrito {
+  display: flex;
+  justify-content: space-around; }
+  .mainTienda .contenedor .carrito .table thead .items th {
+    font-size: 1.7rem;
+    padding: 1.7rem 5.3rem; }
+    .mainTienda .contenedor .carrito .table thead .items th #vaciarCarrito {
+      background-color: #ccbae5;
+      color: #533d71;
+      border: none;
+      padding: .7rem 1.2rem;
+      border-radius: .5rem;
+      font-size: 1.3rem; }
+  .mainTienda .contenedor .carrito .table #productTable {
+    font-size: 1.2rem; }
+    .mainTienda .contenedor .carrito .table #productTable tr th {
+      padding: 1rem; }
+    .mainTienda .contenedor .carrito .table #productTable tr .btnEliminar {
+      background-color: #a88dcf;
+      color: lavender;
+      border: none;
+      padding: .7rem 1.2rem;
+      border-radius: .5rem;
+      font-size: 1.3rem; }
+
+.mainTienda .contenedor .precioTotal {
+  padding-left: 25rem;
+  padding-top: 2rem;
+  font-size: 1.3rem; }
+
+.mainTienda .contenedor #totalPrice {
+  font-size: 1.2rem; }
+
+.mainTienda .contenedor #ConfirmarCompra {
+  background-color: #a88dcf;
+  color: lavender;
+  border: none;
+  padding: .7rem 1.2rem;
+  border-radius: .5rem;
+  font-size: 1.3rem;
+  margin: 2.3rem 29rem;
+  text-align: center;
+  display: block;
+  align-items: center;
+  width: 40%; }
 
 .mainContacto {
   background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url("../img/fondo.png") center center/cover no-repeat;
