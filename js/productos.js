@@ -1,39 +1,17 @@
 
-
-// Creo CLASS para objetos
-class Product {
-    constructor(id, name, info, price, stock, img){
-        this.id = id;
-        this.name = name;
-        this.info = info;
-        this.price = parseFloat(price);
-        this.stock = stock;
-        this.img = img;
-    }
-}
-//array de productos
-const productList = [];
+//array de carrito
 let shoppingCart = [];
 
-//creo los objetos y los pusheo
-    productList.push(new Product (1, "Detallista", "Tejido sintético extremadamente fuerte y duradero que conserva su forma.", 27.99, 25, "../img/productos/bolsa1.png"));
-    productList.push(new Product (2, "Prosperidad", "Material ligero para su uso, costuras reforzadas en las manijas.", 23.59, 25, "../img/productos/bolsa2.png"));
-    productList.push(new Product (3, "Optimismo", "Tejido sintético extremadamente fuerte y duradero que conserva su forma.", 35.37, 30, "../img/productos/bolsa3.png"));
-    productList.push(new Product (4, "Musa", "Adhesivo resistente al agua, de fondo blanco y acabado mate.", 3.99, 15, "../img/productos/sticker1.jpg"));
-    productList.push(new Product (5, "Profundidad", "Adhesivo resistente al agua, de fondo blanco y acabado mate.", 2.89, 12, "../img/productos/sticker2.jpg"));
-    productList.push(new Product (6, "Bondad", "Adhesivo resistente al agua, de fondo blanco y acabado mate.", 4.37, 19, "../img/productos/sticker3.jpg"));
-    productList.push(new Product (7, "Abundancia", "Cerámica blanca duradera con acabado brillante y resistente a los rayones.", 9.69, 20, "../img/productos/taza1.jpg"));
-    productList.push(new Product (8, "Generosidad", "Cerámica blanca con interior negro y mango, lavar a mano únicamente.", 11.99, 15, "../img/productos/taza2.jpg"));
-    productList.push(new Product (9, "Sabiduria", "Cerámica blanca duradera con acabado brillante y resistente a los rayones.", 8.29, 22, "../img/productos/taza3.jpg"));
-
 const cards = document.getElementById("productos");
-let added = document.getElementById("productTable");
-let totalPrice = document.getElementById('totalPrice');
-let cleanCart = document.getElementById('vaciarCarrito');
-let confirmBuy = document.getElementById('ConfirmarCompra');
+const contador = document.getElementById('contador')
+const added = document.querySelector("#cartTable");
+const totalPrice = document.querySelector('#totalPrice');
+const cleanCart = document.querySelector('#vaciarCarrito');
+const confirmBuy = document.querySelector('#confirmarCompra');
 
 
-function upload() {
+function render() {
+    cards.innerHTML = ""
     productList.forEach(el =>{
         let div = document.createElement('div');
         div.classList.add('producto');
@@ -61,24 +39,40 @@ function upload() {
     let addProduct = productList.find(item=> item.id === id)
     shoppingCart.push(addProduct)
     show(addProduct)
-    count()
+    update()
+    localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart))
+
  }
 
  function show(addProduct) {
     let tr = document.createElement('tr')
     tr.classList.add('productIn');
     tr.innerHTML = `<th>${addProduct.name}</th>
-                    <th>${addProduct.price}</th>`
+                    <th>${(addProduct.price.toFixed(2))}</th>
+                    <th>${addProduct.cantidad}</th>
+                    <button id="eliminar${addProduct.id}" class="botonEliminar"><i class="fas fa-trash-alt"></i></button>`
     added.appendChild(tr)
 
-    cleanCart.addEventListener('click',() =>{
-        added.innerHTML = "";
-        totalPrice.innerHTML = 0;
+    let btnDelete = document.getElementById(`eliminar${addProduct.id}`)
+    btnDelete.addEventListener('click', ()=>{
+        btnDelete.parentElement.remove()
+        shoppingCart = shoppingCart.filter(el => el.id !== addProduct.id)
+        console.log(shoppingCart)
+        update()
+        localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart))
     })
-    alert(`El producto ${addProduct.name} se agrega correctamente al carrito.`)
+
+
+    cleanCart.addEventListener('click',() =>{
+        localStorage.clear();
+        added.innerHTML = "";
+        shoppingCart.length = 0;
+        update()     
+    });
  }
 
- function count() {
+ function update() {
+    contador.innerHTML = shoppingCart.reduce((acc,el) => acc + el.cantidad, 0);
     totalPrice.innerText = shoppingCart.reduce((acc,el)=> acc + el.price, 0);
  }
 
@@ -92,7 +86,25 @@ confirmBuy.addEventListener('click', confirmaCompra =>{
 });
 
 
- upload()
+function recuperarCarrito() {
+    if (cartStorage = JSON.parse(localStorage.getItem("shoppingCart"))) {
+        cartStorage.forEach(addProduct =>{
+            shoppingCart.push(addProduct)
+            let tr = document.createElement('tr')
+            tr.classList.add('productIn');
+            tr.innerHTML = `<th>${addProduct.name}</th>
+                            <th>${addProduct.price}</th>
+                            <th>${addProduct.cantidad}</th>
+                            <button id="eliminar${addProduct.id}" class="botonEliminar"><i class="fas fa-trash-alt"></i></button>`
+            added.appendChild(tr)
+            update()
+        })
+    }
+}
+
+recuperarCarrito()
+render()
+
 
  
 
@@ -165,7 +177,7 @@ confirmBuy.addEventListener('click', confirmaCompra =>{
 //     deleteProd.addEventListener('click', () =>{
 //         deleteProd.parentElement.remove();
 //         shoppingCart = shoppingCart.filter(el => el.id !== addProduct.id)
-//         count()
+//         update()
 //     })
 
 

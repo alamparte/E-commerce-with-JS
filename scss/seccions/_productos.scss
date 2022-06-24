@@ -57,19 +57,20 @@
                         }
                     }
                 }
-                #productTable{
+                #cartTable{
                     font-size: 1.2rem;
                     tr{
                         th{
                             padding: 1rem;
                         }
-                        .btnEliminar{
+                        .botonEliminar{
                             background-color: #a88dcf;
                             color: lavender;
                             border: none;
-                            padding: .7rem 1.2rem;
+                            padding: .7rem;
                             border-radius: .5rem;
-                            font-size: 1.3rem;
+                            font-size: 1.1rem;
+                            margin-left: 5.5rem;
                         }
                     }
                 }
@@ -83,7 +84,7 @@
         #totalPrice{
             font-size: 1.2rem;
         }
-        #ConfirmarCompra{
+        #confirmarCompra{
             background-color: #a88dcf;
             color: lavender;
             border: none;

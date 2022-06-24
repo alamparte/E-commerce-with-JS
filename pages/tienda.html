@@ -20,6 +20,7 @@
     <!--link css-->
     <link rel="stylesheet" href="../css/main.css">
     <!--link JS-->
+    <script defer src="../js/stock.js"></script>
     <script defer src="../js/productos.js"></script>
 </head>
 <body>
@@ -72,8 +73,8 @@
                 <!--FIN MENU-->
                 <!--CARRITO DE COMPRAS-->
                 <figure class="carrito">
-                    <a href="../404.html">
-                        <img src="../img/bag.svg" alt="imagen de la bolsa de compras sin relleno">
+                    <a>
+                        <img src="../img/bag.svg" alt="imagen de la bolsa de compras sin relleno"> <span id="contador">0</span>
                     </a>
                 </figure>
             </nav>
@@ -119,16 +120,17 @@
                           <tr class="items">
                             <th>Producto</th>
                             <th>Precio</th>
+                            <th>Cantidad</th>
                             <th><button id="vaciarCarrito">Eliminar todos los productos</button></th>
                           </tr>
                         </thead>
-                        <tbody id="productTable">
+                        <tbody id="cartTable">
                           
                         </tbody>
                     </table>
                 </div>
                 <p class="precioTotal">Precio total: <span id="totalPrice">0</span> €</p>
-                <button id="ConfirmarCompra">Confirmar compra</button>
+                <button id="confirmarCompra">Confirmar compra</button>
             </div>
 
         </main>
