@@ -8,32 +8,57 @@ const added = document.querySelector("#cartTable");
 const totalPrice = document.querySelector('#totalPrice');
 const cleanCart = document.querySelector('#vaciarCarrito');
 const confirmBuy = document.querySelector('#confirmarCompra');
+const contenedorCart = document.getElementById("carrito")
 
 
+//mostrar productos en el HTML
 function render() {
     cards.innerHTML = ""
-    productList.forEach(el =>{
+    //destructure 
+    productList.forEach(({img, name, info, price, id}) =>{
         let div = document.createElement('div');
         div.classList.add('producto');
-        div.innerHTML= `<figure>
-                            <img src="${el.img}">
+        div.innerHTML += `<figure>
+                            <img src="${img}">
                         </figure>
                         <div class="productoBody">
-                            <h2 class="tituloProducto">${el.name}</h2>
-                            <p class="parrafoProducto">${el.info}</p>
-                            <p class="precio">${el.price}€</p>
-                            <a class="botonProducto" id="boton${el.id}">Agregar al carrito</a>
+                            <h2 class="tituloProducto">${name}</h2>
+                            <p class="parrafoProducto">${info}</p>
+                            <p class="precio">${price}€</p>
+                            <a class="botonProducto" id="boton${id}">Agregar al carrito</a>
                         </div>`
         cards.appendChild(div);
 
-        let botonAdd = document.getElementById(`boton${el.id}`);
-
+        // boton añadir al carrito
+        const botonAdd = document.getElementById(`boton${id}`);
         botonAdd.addEventListener('click', () =>{
-            addShoppingCart(el.id);
+            addShoppingCart(id);
+
+            //alert de agregado al carrito
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-right',
+                iconColor: '#8f5bd8',
+                customClass: {
+                  popup: 'colored-toast'
+                },
+                showConfirmButton: false,
+                timer: 2200,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                  }
+              })
+               Toast.fire({
+                icon: 'success',
+                title: name + ' ha sido añadido correctamente al carrito',
+                background: 'lavender'
+              })
         })
     })   
 }
-
+  
 
  function addShoppingCart(id){
     let addProduct = productList.find(item=> item.id === id)
@@ -41,39 +66,83 @@ function render() {
     show(addProduct)
     update()
     localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart))
-
+    console.log(addProduct)
  }
+
+
 
  function show(addProduct) {
     let tr = document.createElement('tr')
     tr.classList.add('productIn');
     tr.innerHTML = `<th>${addProduct.name}</th>
                     <th>${addProduct.price}</th>
-                    <th>${addProduct.cantidad}</th>
+                    <th id="cantidad">${addProduct.cantidad}</th>
                     <button id="eliminar${addProduct.id}" class="botonEliminar"><i class="fas fa-trash-alt"></i></button>`
     added.appendChild(tr)
 
     let btnDelete = document.getElementById(`eliminar${addProduct.id}`)
     btnDelete.addEventListener('click', ()=>{
-        btnDelete.parentElement.remove()
-        shoppingCart = shoppingCart.filter(el => el.id !== addProduct.id)
-        console.log(shoppingCart)
-        update()
-        localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart))
+        //alert para confirmar la eliminación del producto
+        Swal.fire({
+            title: '¿Quieres eliminar el producto?',
+            icon: 'warning',
+            iconColor: '#8f5bd8',
+            showCancelButton: true,
+            confirmButtonColor: '#c7aef5',
+            cancelButtonColor: '#8f5bd8',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) =>{
+            if (result.isConfirmed) {
+                btnDelete.parentElement.remove()
+                shoppingCart = shoppingCart.filter(el => el.id !== addProduct.id)
+                console.log(shoppingCart)
+                update()
+                localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart))
+            }
+        })
     })
 
 
     cleanCart.addEventListener('click',() =>{
-        localStorage.clear();
-        added.innerHTML = "";
-        shoppingCart.length = 0;
-        update()     
+        //alert para confirmar el vaciar el carrito
+       if (shoppingCart.length > 0){ 
+        Swal.fire({
+            title: '¿Seguro quieres vaciar tu carrito?',
+            icon: 'warning',
+            iconColor: '#8f5bd8',
+            showCancelButton: true,
+            confirmButtonColor: '#c7aef5',
+            cancelButtonColor: '#8f5bd8',
+            confirmButtonText: 'Vaciar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) =>{
+            if (result.isConfirmed) {
+                localStorage.clear();
+                added.innerHTML = "";
+                shoppingCart.length = 0;
+                update()  
+            }
+        })  
+    }else{
+        Swal.fire({
+            title: 'Atención',
+            text: 'El carrito se encuentra vacio',
+            icon: 'warning',
+            iconColor: '#8f5bd8',
+            showConfirmButton: false,
+            timer: '2000'
+        })
+    }
+
     });
+    update()
  }
 
  function update() {
     contador.innerHTML = shoppingCart.reduce((acc,el) => acc + el.cantidad, 0);
     totalPrice.innerText = (shoppingCart.reduce((acc,el)=> acc + el.price, 0)).toFixed(2);
+    localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart))
  }
 
 
@@ -96,8 +165,6 @@ function recuperarCarrito() {
 recuperarCarrito()
 render()
 
-
- 
 
 
 
