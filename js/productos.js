@@ -60,13 +60,27 @@ function render() {
 }
   
 
- function addShoppingCart(id){
+
+function addShoppingCart(id){
+    //operador ternario
+    shoppingCart = localStorage.getItem("shoppingCart") ? JSON.parse(localStorage.getItem("shoppingCart")) : [];
+
     let addProduct = productList.find(item=> item.id === id)
-    shoppingCart.push(addProduct)
+    let idDuplicate = shoppingCart.find(prod => prod.id === addProduct.id)
+    if(!idDuplicate){
+        //spread
+        shoppingCart.push({...addProduct})
+        localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart))
+
+    }else{
+        let cartFilter = shoppingCart.filter(prod => prod.id != idDuplicate.id)
+        shoppingCart = [...cartFilter, {...idDuplicate, cantidad: idDuplicate.cantidad + 1}]
+        
+    }
+    console.log(shoppingCart)
+
     show(addProduct)
     update()
-    localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart))
-    console.log(addProduct)
  }
 
 
@@ -139,9 +153,10 @@ function render() {
     update()
  }
 
+
  function update() {
     contador.innerHTML = shoppingCart.reduce((acc,el) => acc + el.cantidad, 0);
-    totalPrice.innerText = (shoppingCart.reduce((acc,el)=> acc + el.price, 0)).toFixed(2);
+    totalPrice.innerText = (shoppingCart.reduce((acc,el)=> acc + (el.price * el.cantidad), 0)).toFixed(2);
     localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart))
  }
 
@@ -153,7 +168,7 @@ function recuperarCarrito() {
             let tr = document.createElement('tr')
             tr.classList.add('productIn');
             tr.innerHTML = `<th>${addProduct.name}</th>
-                            <th>${(addProduct.price.toFixed(2))}</th>
+                            <th>${addProduct.price}</th>
                             <th>${addProduct.cantidad}</th>
                             <button id="eliminar${addProduct.id}" class="botonEliminar"><i class="fas fa-trash-alt"></i></button>`
             added.appendChild(tr)
@@ -164,8 +179,6 @@ function recuperarCarrito() {
 
 recuperarCarrito()
 render()
-
-
 
 
 
