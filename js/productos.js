@@ -1,4 +1,3 @@
-
 //array de carrito
 let shoppingCart = [];
 
@@ -10,10 +9,12 @@ const cleanCart = document.querySelector('#vaciarCarrito');
 const confirmBuy = document.querySelector('#confirmarCompra');
 const contenedorCart = document.getElementById("carrito")
 
+let productList = [];
 
 //mostrar productos en el HTML
-function render() {
+const showProd = async () => {
     cards.innerHTML = ""
+    const productList = await fetchData()
     //destructure 
     productList.forEach(({img, name, info, price, id}) =>{
         let div = document.createElement('div');
@@ -58,6 +59,63 @@ function render() {
         })
     })   
 }
+showProd()
+
+
+
+
+
+
+
+
+
+//mostrar productos en el HTML
+// function render() {
+//     cards.innerHTML = ""
+//     //destructure 
+//     productList.forEach(({img, name, info, price, id}) =>{
+//         let div = document.createElement('div');
+//         div.classList.add('producto');
+//         div.innerHTML += `<figure>
+//                             <img src="${img}">
+//                         </figure>
+//                         <div class="productoBody">
+//                             <h2 class="tituloProducto">${name}</h2>
+//                             <p class="parrafoProducto">${info}</p>
+//                             <p class="precio">${price}€</p>
+//                             <a class="botonProducto" id="boton${id}">Agregar al carrito</a>
+//                         </div>`
+//         cards.appendChild(div);
+
+//         // boton añadir al carrito
+//         const botonAdd = document.getElementById(`boton${id}`);
+//         botonAdd.addEventListener('click', () =>{
+//             addShoppingCart(id);
+
+//             //alert de agregado al carrito
+//             const Toast = Swal.mixin({
+//                 toast: true,
+//                 position: 'top-right',
+//                 iconColor: '#8f5bd8',
+//                 customClass: {
+//                   popup: 'colored-toast'
+//                 },
+//                 showConfirmButton: false,
+//                 timer: 2200,
+//                 timerProgressBar: true,
+//                 didOpen: (toast) => {
+//                     toast.addEventListener('mouseenter', Swal.stopTimer)
+//                     toast.addEventListener('mouseleave', Swal.resumeTimer)
+//                   }
+//               })
+//                Toast.fire({
+//                 icon: 'success',
+//                 title: name + ' ha sido añadido correctamente al carrito',
+//                 background: 'lavender'
+//               })
+//         })
+//     })   
+// }
   
 
 
@@ -178,10 +236,21 @@ function recuperarCarrito() {
 }
 
 recuperarCarrito()
-render()
+// render()
+
+
+
+//  function addShoppingCart(id){
+    //     let addProduct = productList.find(item=> item.id === id)
+    //     shoppingCart.push(addProduct)
+    //     show(addProduct)
+    //     update()
+    //     localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart))
+    //     console.log(addProduct)
+    //  }
 
 
 
 
-
-
+    
+ 
