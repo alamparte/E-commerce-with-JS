@@ -1,0 +1,158 @@
+@import "../utilities/mixins";
+@import "../utilities/variables";
+@import "../utilities/maps";
+
+main{
+    .mainCart{
+        display: grid;
+        grid-template-areas: "contenedorCart contenedorPrice"; 
+        grid-template-columns: 1.55fr 0.45fr;
+        grid-template-rows: auto;
+        @include measures (100%, auto);
+        background-color: map-get($map: $colores, $key: laven);
+        gap: 1.5rem;
+        padding: 1.5rem;
+        margin-top: 6.54rem;
+        .contenedorCards{
+            grid-area: contenedorCart;
+            background-color: $color-nav;
+            padding: 1.4rem;
+            .separador{
+                border-top: 0.063rem solid #C0B3F0;
+            }
+            h1{
+                font-family: $font-secundaria;
+                color: map-get($map: $colores, $key: title);
+                font-weight: 500;
+            }
+            .precioTitle{
+                display: flex;
+                justify-content: flex-end;
+                font-size: 1.2rem ;
+            }
+            .contCard{
+            display: grid;
+            grid-template-columns: .4fr 1.5fr .5fr;
+            column-gap: 2.2rem;
+            padding: 1.3rem 0;
+                figure{
+                    width: 180px;
+                    height: 180px;
+                    transform: none;
+                    overflow: hidden;
+                    margin: 0;
+                    img{
+                        width: 100%;
+                        overflow: hidden;
+                        transition: all 1s ease;
+                        &:hover{
+                            transform: scale(1.5);
+                        }
+                    }
+                }
+                .info{
+                    justify-content: flex-start;
+                    font-size: 1.2rem;
+                    .titleI{
+                        font-size: 1.9rem;
+                        font-weight: bold;
+                    }
+                    .stockI{
+                        color: rgb(44, 151, 44);
+                        padding: 1.1rem 0;
+                    }
+                    .qtI{
+                        padding: 1.1rem 0;                }
+                    .borrar{
+                        background-color: map-get($map: $colores, $key: hover);
+                        color: map-get($map: $colores, $key: details);
+                        border: none;
+                        padding: .7rem;
+                        border-radius: .5rem;
+                        font-size: 1.1rem;
+                        &:hover{
+                            background-color: map-get($map: $colores, $key: details);
+                            color: map-get($map: $colores, $key: hover);
+                        }
+                    }
+                }
+                .precio{
+                    font-size: 1.5rem;
+                    justify-self: end;
+                }
+
+            }
+        }
+        .contenedorPrice{
+            grid-area: contenedorPrice;
+            background-color: $color-nav;
+            padding: 1.4rem;
+            .subtotal{
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            .end{
+                width: 100%;               
+                border: none;
+                font-size: 1.55rem;
+                a{
+                    display: block;
+                    background-color: map-get($map: $colores, $key: hover);
+                    color: map-get($map: $colores, $key: details);
+                    width: 100%;
+                    border-radius: .20rem;
+                    padding: .7rem;
+                    &:hover{
+                        color: map-get($map: $colores, $key: laven);
+                    }
+                }
+            }
+        }
+    }
+    .vacio{
+        @include measures (100%, auto);
+        text-align: center;
+        margin-top: 6rem;
+        padding: 4rem 0;
+        background-color: map-get($map: $colores, $key: laven);
+        figure{
+            img{
+                @include measures (21rem, auto);
+                animation-name: girar;
+                animation-iteration-count: infinite;
+                animation-duration: 98s;
+                @keyframes girar{
+                    from{
+                        transform: rotate(0);
+                    }
+                    to{
+                        transform: rotate(360deg);
+                    }
+                }
+            }
+        }
+        div{
+            p{
+                font-size: 1.3rem;
+                padding: 1.8rem;
+            }
+            button{
+                margin: 0 auto;
+                border: none;
+                border-radius: 0.20rem;
+                a{
+                    color: #8f5bd8;
+                    padding: .6rem 1.1rem;
+                    font-size: 1.3rem;
+                    background-color: #c7aef5;
+                    border: #8f5bd8 solid .03rem;
+                    border-radius: 0.20rem;
+                    &:hover{
+                        color: #c7aef5;
+                        background-color: #8f5bd8;
+                    }
+                }
+            }
+        }
+    }
+}

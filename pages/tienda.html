@@ -9,7 +9,7 @@
     <meta name="keywords" content="mandalas, zentangle arte, bolsas de tela, stickers, sticker acabado mate, resistente al agua, tazas, taza resistente a los rayones, geometría sagrada, círculo de vida, simbolos sagrados, meditación, yin-yang, flor de la vida, costuras reforzadas, tejido sintético">
     <title>Tienda | Kreislife</title>
     <!--favicon-->
-    <link rel="shortcut icon" href="../img/favicon1.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <!--typography link-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,13 +19,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--link css-->
     <link rel="stylesheet" href="../css/main.css">
-    <!--link JS-->
-    <script defer src="../js/stock.js"></script>
-    <script defer src="../js/productos.js"></script>
+   
     <!--link swal-->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- <link rel="stylesheet" href="sweetalert2.min.css"> -->
-    <!-- <script src="sweetalert2.all.min.js"></script> -->
+    <script defer src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--link JS-->
+    <script defer src="../js/variables.js"></script>
+    <script defer src="../js/getData.js"></script>
+    <script defer src="../js/cart.js"></script>
+    <script defer src="../js/update.js"></script>
+    <script defer src="../js/search.js"></script>
 
 </head>
 <body>
@@ -77,71 +80,41 @@
                 </ul>
                 <!--FIN MENU-->
                 <!--CARRITO DE COMPRAS-->
+                    
                 <figure class="carrito">
-                    <a>
+                    <a href="../pages/cart.html">
                         <img src="../img/bag.svg" alt="imagen de la bolsa de compras sin relleno"> <span id="contador">0</span>
                     </a>
                 </figure>
+                
             </nav>
             <!--FIN DE NAV-->
+            
             <!--ENCABEZADO-->
             <h1>
                 TIENDA
             </h1>
+            <!-- LUPA -->
+            <div class="lupa">
+                <input id="search" type="text" placeholder="buscar" required>
+                <div class="btnLupa">
+                    <i class="fas fa-search icon"></i>
+                </div>
+            </div>
         </header>
 
         <!--INFO DEL SITIO-->
         <main class="mainTienda">
-            <!--BOLSAS DE TELA-->
+            
+            <!-- acá se pintan los productos con JS -->
             <article class="productos" id="productos">
-
-                <!-- <div class="producto"> -->
-                    <!-- <figure>
-                        <img src="../img/productos/bolsa1.png" alt="bolsa de tela con estampado de una llama zentangle, con un fondo manchado verde y tira de color negro">
-                    </figure>
-                    <div class="productoBody">
-                        <h2 class="tituloProducto">
-                            Detallista
-                        </h2>
-                        <p class="parrafoProducto">
-                            Tejido sintético extremadamente fuerte y duradero que conserva su forma.
-                        </p>
-                        <p class="precio">
-                            $27,99
-                        </p>
-                        <button class="botonProducto" type="button">
-                            <a href="../404.html">Agregar al carrito</a>
-                        </button>
-                    </div> -->
-                <!-- </div> -->
-
+                
             </article>
-
-            <div class="contenedor">
-                <h2 class="tituloCarrito">Carrito</h2>
-                <div class="carrito" id="carrito">
-                    <table class="table">
-                        <thead>
-                          <tr class="items">
-                            <th>Producto</th>
-                            <th>Precio</th>
-                            <th>Cantidad</th>
-                            <th><button id="vaciarCarrito">Eliminar todos los productos</button></th>
-                          </tr>
-                        </thead>
-                        <tbody id="cartTable">
-                          
-                        </tbody>
-                    </table>
-                </div>
-                <p class="precioTotal">Precio total: <span id="totalPrice">0</span> €</p>
-                <button id="confirmarCompra">Confirmar compra</button>
-            </div>
 
         </main>
         <!--FIN INFO DEL SITIO-->
         <!--INCIO DE FOOTER-->
-        <footer>
+        <footer class="footer">
             <section class="contact">
                 <p class="contactP">
                     Si tienes dudas, preguntas o simplemente quieres saber más acerca

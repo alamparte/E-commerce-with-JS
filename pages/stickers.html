@@ -9,7 +9,7 @@
     <meta name="keywords" content="mandalas, zentangle arte, sticker acabado mate, resistente al agua, stickers,  geometría sagrada, círculo de vida, simbolos sagrados, meditación, yin-yang, flor de la vida">
     <title>Stickers | Kreislife</title>
     <!--favicon-->
-    <link rel="shortcut icon" href="../img/favicon1.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <!--typography link-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--link css-->
     <link rel="stylesheet" href="../css/main.css">
+    <!--link swal-->
+    <script defer src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!--link JS-->
+    <script defer src="../js/variables.js"></script>
+    <script defer src="../js/getDataSticker.js"></script>
+    <script defer src="../js/cart.js"></script>
+    <script defer src="../js/update.js"></script>
 </head>
 <body>
     <div class="grid">
@@ -71,8 +77,8 @@
                 <!--FIN MENU-->
                 <!--CARRITO DE COMPRAS-->
                 <figure class="carrito">
-                    <a href="../404.html">
-                        <img src="../img/bag.svg" alt="imagen de la bolsa de compras sin relleno">
+                    <a href="../pages/cart.html">
+                        <img src="../img/bag.svg" alt="imagen de la bolsa de compras sin relleno"> <span id="contador">0</span>
                     </a>
                 </figure>
             </nav>
@@ -85,69 +91,14 @@
 
         <!--INFO DEL SITIO-->
         <main class="mainStickers">
-            <article class="productos">
-                <div class="producto">
-                    <figure>
-                        <img src="../img/productos/sticker1.jpg" alt="es una pegatina/ sticker de un mandala completo, redondo, en una patineta negra pegado">
-                    </figure>
-                    <div class="productoBody">
-                        <h2 class="tituloProducto">
-                            Musa
-                        </h2>
-                        <p class="parrafoProducto">
-                            Adhesivo resistente al agua, de fondo blanco y acabado mate.
-                        </p>
-                        <p class="precio">
-                            $3,99
-                        </p>
-                        <button class="botonProducto" type="button">
-                            <a href="../404.html">Agregar al carrito</a>
-                        </button>
-                    </div>
-                </div>
-                <div class="producto">
-                    <figure>
-                        <img src="../img/productos/sticker2.jpg" alt="es una pegatina/sticker de un mandala redondo, pegado en la computadora, donde se ve el mouse y lapiz">
-                    </figure>
-                    <div class="productoBody">
-                        <h2 class="tituloProducto">
-                            Profundidad
-                        </h2>
-                        <p class="parrafoProducto">
-                            Adhesivo resistente al agua, de fondo blanco y acabado mate.
-                        </p>
-                        <p class="precio">
-                            $2,89
-                        </p>
-                        <button class="botonProducto" type="button">
-                            <a href="../404.html">Agregar al carrito</a>
-                        </button>
-                    </div>
-                </div>
-                <div class="producto">
-                    <figure>
-                        <img src="../img/productos/sticker3.jpg" alt="es una pegatina/sticker de un mandala completo, pegado en el borde de la computadora">
-                    </figure>
-                    <div class="productoBody">
-                        <h3 class="tituloProducto">
-                            Bondad
-                        </h3>
-                        <p class="parrafoProducto">
-                            Adhesivo resistente al agua, de fondo blanco y acabado mate.
-                        </p>
-                        <p class="precio">
-                            $4,37
-                        </p>
-                        <button class="botonProducto" type="button">
-                            <a href="../404.html">Agregar al carrito</a>
-                        </button>
-                    </div>
-                </div>
+            <!-- acá se pintan los productos con JS -->
+            <article class="productos" id="productoSticker">
+                
             </article>
         </main>
         <!--FIN INFO DEL SITIO-->
         <!--INCIO DE FOOTER-->
-        <footer>
+        <footer class="footer">
             <section class="contact">
                 <p class="contactP">
                     Si tienes dudas, preguntas o simplemente quieres saber más acerca

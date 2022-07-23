@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--meta Description and Keywords-->
-    <meta name="description" content="Aquí encontrarás diseños hechos a mano de mandalas, zentangle arte, animales zentangle y muchos más, para inspirarte y dejar fluir tu imaginación.">
-    <meta name="keywords" content="mandalas, zentangle arte, geometría sagrada, círculo de vida, simbolos sagrados, meditación, yin-yang, flor de la vida, animales zentangle, mini mandalas">
-    <title>Portafolio | Kreislife</title>
+    <title>Cart | Kreislife</title>
     <!--favicon-->
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <!--typography link-->
@@ -17,10 +14,18 @@
     <!-- icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--link de mi css-->
+    <!--link css-->
     <link rel="stylesheet" href="../css/main.css">
+   
+    <!--link swal-->
+    <script defer src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!--link JS-->
+    <script defer src="../js/variables.js"></script>
     <script defer src="../js/cart.js"></script>
+    <script defer src="../js/update.js"></script>
+    <script defer src="../js/storageCart.js"></script>
+    <script defer src="../js/emptyCart.js"></script>
 </head>
 <body>
     <div class="grid">
@@ -71,37 +76,45 @@
                 </ul>
                 <!--FIN MENU-->
                 <!--CARRITO DE COMPRAS-->
+                    
                 <figure class="carrito">
                     <a href="../pages/cart.html">
                         <img src="../img/bag.svg" alt="imagen de la bolsa de compras sin relleno"> <span id="contador">0</span>
                     </a>
                 </figure>
+                
             </nav>
             <!--FIN DE NAV-->
-            <!--ENCABEZADO-->
-            <h1>
-                PORTAFOLIO
-            </h1>
         </header>
 
-        <!--INFO DEL SITIO-->
-        <main>
-            <section class="mainPortafolio">
-                <img src="../img/portafolio/1.jpg" alt="mandala con centro de la flor de la vida, creado en negro con microfibra">
-                <img src="../img/portafolio/2.jpg" alt="mandala en forma de rombo con dos caras, la primer cara está rellena de zentangle arte, y la cara que se encuentra detrás está completada con hojas vacias, dando la impresión de sombra ">
-                <img src="../img/portafolio/3.jpg" alt="mandala mitad lineas finas mitad zentangle, con un centro de una luna">
-                <img src="../img/portafolio/4.jpg" alt="mandala redondo en color negro con pequeños detalles en microfibra negra">
-                <img src="../img/portafolio/5.jpg" alt="mandala con centro de lineas finas como el ojo humano">
-                <img src="../img/portafolio/6.jpg" alt="ballena con relleno zentangle y mandala en hoja resistente al agua">
-                <img src="../img/portafolio/7.jpg" alt="mandala con un centro de flor de cinco puntas">
-                <img src="../img/portafolio/8.jpg" alt="hoja de mini mandalas">
-                <img src="../img/portafolio/9.jpg" alt="mariposa con zentangle y mandala">
-                <img src="../img/portafolio/10.jpg" alt="flor de la vida en negro y blanco en forma de hexágono">
-                <img src="../img/portafolio/11.jpg" alt="mandala con una luna de lineas en el centro">
-                <img src="../img/portafolio/12.jpg" alt="mandala con el ying-yang de centro y hacia afuera se completa el mandala redondo">
-            </section>
+        <!--INICIO INFO DEL SITIO-->
+        <main id="contenedorCart">
+            
+            <div class="mainCart" id="contenedorCarro">
+                <article class="contenedorCards" id="cartNew">
+                    <h1>
+                        CARRITO DE COMPRAS
+                    </h1>
+                    <p class="precioTitle">Precio</p>
+                
+                    
+                 </article>
+
+                 <aside class="contenedorPrice">
+                    <p class="subtotal">
+                        Subtotal (<b><span id="contadorDos">0</span></b> items): <b><span id="subTotal">0</span></b>
+                        €
+                    </p>
+                    <button class="end"> 
+                        <a href="compra.html">Tramitar pedido</a>
+                    </button>
+                </aside>
+            </div>
+        
         </main>
         <!--FIN INFO DEL SITIO-->
+
+
         <!--INCIO DE FOOTER-->
         <footer class="footer">
             <section class="contact">
@@ -116,9 +129,9 @@
                 </div>
             </section>
             <section class="containerLeft">
-                <h2 class="tituloFooter">
+                <h5 class="tituloFooter">
                     KREISLIFE
-                </h2>
+                </h5>
                 <p>
                   Mandalas, zentangle arte y productos de edición limitada creados a
                   través de la imaginación e intuición.
@@ -138,9 +151,9 @@
                 </div>
             </section>
             <section class="containerRight">
-                <h3 class="tituloFooter">
+                <h5 class="tituloFooter">
                     NEWSLETTER
-                </h3>
+                </h5>
                 <form action="#">
                     <input type="email" placeholder="Correo electrónico"/>
                 </form>
@@ -155,6 +168,5 @@
         </footer>
         <!--FIN FOOTER-->
     </div>
-    
 </body>
 </html>

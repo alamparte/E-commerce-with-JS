@@ -100,7 +100,7 @@ body {
   .productos .producto .productoBody {
     padding: 1rem; }
     .productos .producto .productoBody .tituloProducto {
-      font-size: 1.9rem;
+      font-size: 1.8rem;
       font-weight: 500;
       margin-bottom: .5rem; }
     .productos .producto .productoBody .parrafoProducto {
@@ -197,9 +197,11 @@ header nav {
       header nav .menu li .submenu li {
         margin: 1.1rem;
         padding: 0 .3rem; }
-  header nav .carrito a img {
-    width: 22px;
-    height: 22px; }
+  header nav .carrito a {
+    color: #2c0d33; }
+    header nav .carrito a img {
+      width: 22px;
+      height: 22px; }
 
 header .titleIndex {
   margin-top: 5.5rem;
@@ -214,6 +216,41 @@ header h1 {
   font-family: "Handlee", cursive;
   color: #4e2981;
   font-weight: 500; }
+
+header .lupa {
+  position: absolute;
+  padding: .5rem;
+  right: 3%;
+  top: 17%; }
+  header .lupa:hover input {
+    width: 340px; }
+  header .lupa input {
+    width: 0;
+    height: 40px;
+    padding: 0 1.3rem;
+    font-size: 1.2rem;
+    color: black;
+    background-color: white;
+    outline: none;
+    border: 1px solid silver;
+    border-radius: 30px;
+    transition: all 0.6s ease; }
+    header .lupa inputfocus {
+      width: 340px;
+      height: 0px; }
+  header .lupa .btnLupa {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    top: 0;
+    right: 0;
+    background-color: #C0B3F0;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 50px;
+    cursor: pointer; }
 
 @media only screen and (max-width: 468px) {
   header nav .logo {
@@ -623,6 +660,243 @@ footer {
     .mainBio .textBio {
       width: 55rem;
       height: auto; } }
+
+main .mainCart {
+  display: grid;
+  grid-template-areas: "contenedorCart contenedorPrice";
+  grid-template-columns: 1.55fr 0.45fr;
+  grid-template-rows: auto;
+  width: 100%;
+  height: auto;
+  background-color: lavender;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  margin-top: 6.54rem; }
+  main .mainCart .contenedorCards {
+    grid-area: contenedorCart;
+    background-color: #f7f7ff;
+    padding: 1.4rem; }
+    main .mainCart .contenedorCards .separador {
+      border-top: 0.063rem solid #C0B3F0; }
+    main .mainCart .contenedorCards h1 {
+      font-family: "Handlee", cursive;
+      color: #4e2981;
+      font-weight: 500; }
+    main .mainCart .contenedorCards .precioTitle {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 1.2rem; }
+    main .mainCart .contenedorCards .contCard {
+      display: grid;
+      grid-template-columns: .4fr 1.5fr .5fr;
+      column-gap: 2.2rem;
+      padding: 1.3rem 0; }
+      main .mainCart .contenedorCards .contCard figure {
+        width: 180px;
+        height: 180px;
+        transform: none;
+        overflow: hidden;
+        margin: 0; }
+        main .mainCart .contenedorCards .contCard figure img {
+          width: 100%;
+          overflow: hidden;
+          transition: all 1s ease; }
+          main .mainCart .contenedorCards .contCard figure img:hover {
+            transform: scale(1.5); }
+      main .mainCart .contenedorCards .contCard .info {
+        justify-content: flex-start;
+        font-size: 1.2rem; }
+        main .mainCart .contenedorCards .contCard .info .titleI {
+          font-size: 1.9rem;
+          font-weight: bold; }
+        main .mainCart .contenedorCards .contCard .info .stockI {
+          color: #2c972c;
+          padding: 1.1rem 0; }
+        main .mainCart .contenedorCards .contCard .info .qtI {
+          padding: 1.1rem 0; }
+        main .mainCart .contenedorCards .contCard .info .borrar {
+          background-color: #c7aef5;
+          color: #8f5bd8;
+          border: none;
+          padding: .7rem;
+          border-radius: .5rem;
+          font-size: 1.1rem; }
+          main .mainCart .contenedorCards .contCard .info .borrar:hover {
+            background-color: #8f5bd8;
+            color: #c7aef5; }
+      main .mainCart .contenedorCards .contCard .precio {
+        font-size: 1.5rem;
+        justify-self: end; }
+  main .mainCart .contenedorPrice {
+    grid-area: contenedorPrice;
+    background-color: #f7f7ff;
+    padding: 1.4rem; }
+    main .mainCart .contenedorPrice .subtotal {
+      font-size: 1.5rem;
+      margin-bottom: 1rem; }
+    main .mainCart .contenedorPrice .end {
+      width: 100%;
+      border: none;
+      font-size: 1.55rem; }
+      main .mainCart .contenedorPrice .end a {
+        display: block;
+        background-color: #c7aef5;
+        color: #8f5bd8;
+        width: 100%;
+        border-radius: .20rem;
+        padding: .7rem; }
+        main .mainCart .contenedorPrice .end a:hover {
+          color: lavender; }
+
+main .vacio {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-top: 6rem;
+  padding: 4rem 0;
+  background-color: lavender; }
+  main .vacio figure img {
+    width: 21rem;
+    height: auto;
+    animation-name: girar;
+    animation-iteration-count: infinite;
+    animation-duration: 98s; }
+
+@keyframes girar {
+  from {
+    transform: rotate(0); }
+  to {
+    transform: rotate(360deg); } }
+  main .vacio div p {
+    font-size: 1.3rem;
+    padding: 1.8rem; }
+  main .vacio div button {
+    margin: 0 auto;
+    border: none;
+    border-radius: 0.20rem; }
+    main .vacio div button a {
+      color: #8f5bd8;
+      padding: .6rem 1.1rem;
+      font-size: 1.3rem;
+      background-color: #c7aef5;
+      border: #8f5bd8 solid .03rem;
+      border-radius: 0.20rem; }
+      main .vacio div button a:hover {
+        color: #c7aef5;
+        background-color: #8f5bd8; }
+
+header .navCompra {
+  background-color: white;
+  box-shadow: none;
+  position: relative; }
+
+.mainCompra {
+  padding: 2rem 0 5rem 0; }
+  .mainCompra .contCompra {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    font-size: 1.2rem;
+    padding: 0 1rem; }
+    .mainCompra .contCompra .prodCompra {
+      width: 50%; }
+      .mainCompra .contCompra .prodCompra .resumen {
+        font-size: 1.4rem;
+        margin-top: 2.3rem; }
+      .mainCompra .contCompra .prodCompra .cardCompra .items {
+        border: 1px solid #b3b3b3;
+        font-size: 1.09rem;
+        margin: 1rem 0;
+        display: flex;
+        align-items: center; }
+        .mainCompra .contCompra .prodCompra .cardCompra .items img {
+          width: 40%; }
+        .mainCompra .contCompra .prodCompra .cardCompra .items .inf {
+          padding: 1rem; }
+          .mainCompra .contCompra .prodCompra .cardCompra .items .inf .can {
+            padding: 1.1rem 0; }
+      .mainCompra .contCompra .prodCompra button {
+        border: none;
+        border-radius: 0.20rem; }
+        .mainCompra .contCompra .prodCompra button a {
+          color: #8f5bd8;
+          padding: .4rem 1rem;
+          font-size: 1.32rem;
+          background-color: #c7aef5;
+          border: #8f5bd8 solid .03rem;
+          border-radius: 0.20rem; }
+          .mainCompra .contCompra .prodCompra button a:hover {
+            color: #c7aef5;
+            background-color: #8f5bd8; }
+      .mainCompra .contCompra .prodCompra .totalPagar {
+        text-align: end; }
+    .mainCompra .contCompra .form form label {
+      display: block;
+      padding: .7rem 0; }
+    .mainCompra .contCompra .form form input {
+      display: block;
+      font-size: 1.2rem;
+      padding: .4rem .8rem; }
+    .mainCompra .contCompra .form form .nombres {
+      display: flex;
+      column-gap: 1rem; }
+    .mainCompra .contCompra .form .tc {
+      display: flex;
+      column-gap: 1rem; }
+    .mainCompra .contCompra .form p {
+      padding: 1.9rem 0 .7rem 0; }
+    .mainCompra .contCompra .form button {
+      margin-top: 1.8rem;
+      border: none; }
+      .mainCompra .contCompra .form button a {
+        color: #8f5bd8;
+        background-color: white;
+        font-size: 1.3rem;
+        width: 100%;
+        display: inline-block;
+        padding: .8rem 1.2rem;
+        border: #8f5bd8 solid .03rem;
+        border-radius: 0.20rem; }
+        .mainCompra .contCompra .form button a:hover {
+          background-color: lavender; }
+
+#ft .derechos p span {
+  color: #8f5bd8; }
+
+.mainPay .innerPay {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  padding: 7rem 0; }
+  .mainPay .innerPay .pago .checked {
+    text-align: center;
+    color: #c7aef5;
+    font-size: 10rem; }
+  .mainPay .innerPay .pago .exitoPago {
+    font-size: 1.3rem;
+    text-align: center; }
+    .mainPay .innerPay .pago .exitoPago p {
+      padding: .5rem; }
+    .mainPay .innerPay .pago .exitoPago .volver {
+      margin-top: 1.5rem;
+      margin-top: 1.8rem;
+      border: none; }
+      .mainPay .innerPay .pago .exitoPago .volver a {
+        color: #8f5bd8;
+        background-color: white;
+        font-size: 1.3rem;
+        width: 100%;
+        display: inline-block;
+        padding: .8rem 1.2rem;
+        border: #8f5bd8 solid .03rem;
+        border-radius: 0.20rem; }
+        .mainPay .innerPay .pago .exitoPago .volver a:hover {
+          background-color: lavender; }
 
 .productos {
   display: grid;

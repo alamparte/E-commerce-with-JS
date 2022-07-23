@@ -19,7 +19,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--link de mi css-->
     <link rel="stylesheet" href="../css/main.css">
+    <!--link swal-->
+    <script defer src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!--link JS-->
+    <script defer src="../js/variables.js"></script>
+    <script defer src="../js/getDataBolsa.js"></script>
+    <script defer src="../js/cart.js"></script>
+    <script defer src="../js/update.js"></script>
 </head>
 <body>
     <div class="grid">
@@ -71,8 +77,8 @@
                 <!--FIN MENU-->
                 <!--CARRITO DE COMPRAS-->
                 <figure class="carrito">
-                    <a href="../404.html">
-                        <img src="../img/bag.svg" alt="imagen de la bolsa de compras sin relleno">
+                    <a href="../pages/cart.html">
+                        <img src="../img/bag.svg" alt="imagen de la bolsa de compras sin relleno"> <span id="contador">0</span>
                     </a>
                 </figure>
             </nav>
@@ -85,69 +91,14 @@
 
         <!--INFO DEL SITIO-->
         <main class="mainBolsas">
-            <article class="productos">
-                <div class="producto">
-                    <figure>
-                        <img src="../img/productos/bolsa1.png" alt="bolsa de tela con estampado de una llama zentangle, con un fondo manchado verde y tira de color negro">
-                    </figure>
-                    <div class="productoBody">
-                        <h2 class="tituloProducto">
-                            Detallista
-                        </h2>
-                        <p class="parrafoProducto">
-                            Tejido sintético extremadamente fuerte y duradero que conserva su forma.
-                        </p>
-                        <p class="precio">
-                            $27,99
-                        </p>
-                        <button class="botonProducto" type="button">
-                            <a href="../404.html">Agregar al carrito</a>
-                        </button>
-                    </div>
-                </div>
-                <div class="producto">
-                    <figure>
-                        <img src="../img/productos/bolsa2.png" alt="bolsa de tela con un mandala que cubre la parte delantera, con fondo blanco">
-                    </figure>
-                    <div class="productoBody">
-                        <h2 class="tituloProducto">
-                            Prosperidad
-                        </h2>
-                        <p class="parrafoProducto">
-                            Material ligero para su uso, costuras reforzadas en las manijas.
-                        </p>
-                        <p class="precio">
-                            $23,59
-                        </p>
-                        <button class="botonProducto" type="button">
-                            <a href="../404.html">Agregar al carrito</a>
-                        </button>
-                    </div>
-                </div>
-                <div class="producto">
-                    <figure>
-                        <img src="../img/productos/bolsa3.png" alt="bolsa de tela con fondo verde y lineas delgadas blancas, encima un mandala que cubre todo el frente de la misma">
-                    </figure>
-                    <div class="productoBody">
-                        <h3 class="tituloProducto">
-                            Optimismo
-                        </h3>
-                        <p class="parrafoProducto">
-                            Tejido sintético extremadamente fuerte y duradero que conserva su forma.
-                        </p>
-                        <p class="precio">
-                            $35,37
-                        </p>
-                        <button class="botonProducto" type="button">
-                            <a href="../404.html">Agregar al carrito</a>
-                        </button>
-                    </div>
-                </div>
+            <!-- acá se pintan los productos con JS -->
+            <article class="productos" id="productoBolsa">
+                
             </article>
         </main>
         <!--FIN INFO DEL SITIO-->
         <!--INCIO DE FOOTER-->
-        <footer>
+        <footer class="footer">
             <section class="contact">
                 <p class="contactP">
                     Si tienes dudas, preguntas o simplemente quieres saber más acerca
